@@ -12,8 +12,9 @@ app.use(express.json());
 
 // Connect to MongoDB (use Docker host 'mongo' when running in containers,
 // otherwise fall back to localhost for local development)
-const MONGO_URI =
-  process.env.MONGO_URI || "mongodb://127.0.0.1:27017/mern-docker";
+
+// change localhost to mongo because the backend runs in a docker container
+const MONGO_URI = process.env.MONGO_URI || "mongodb://mongo:27017/mern-docker";
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log(`Connected to MongoDB (${MONGO_URI})`))
